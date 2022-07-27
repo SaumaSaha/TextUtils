@@ -1,9 +1,9 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import About from './components/About';
+// import About from './components/About';
 import TextForm from './components/TextForm';
 import React, {useState} from 'react'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+// import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 function App() {
   const [Mode, setMode] = useState('light')
 
@@ -20,15 +20,15 @@ function App() {
 
   return (
     <>
-    <Router>
+    {/* <Router> */}
       <Navbar title="TextUtilities" mode={Mode} toggleMode={toggleMode}/>
       <div className="container my-5">
-      <Routes>
-          <Route path="/about" element={<About/>} />
-          <Route path="/" element={<TextForm heading="Enter Text Here" mode={Mode}/>  } />
-      </Routes>
+      {/* <Routes> */}
+          
+          <TextForm heading="Enter Text Here" mode={Mode}/> 
+      {/* </Routes> */}
       </div>
-    </Router>
+    {/* </Router> */}
     </>
   );
 }
