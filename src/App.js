@@ -1,34 +1,28 @@
-import './App.css';
-import Navbar from './components/Navbar';
+import "./App.css";
+import Navbar from "./components/Navbar";
 // import About from './components/About';
-import TextForm from './components/TextForm';
-import React, {useState} from 'react'
+import TextForm from "./components/TextForm";
+import React, { useState } from "react";
 // import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 function App() {
-  const [Mode, setMode] = useState('light')
+  const [Mode, setMode] = useState("light");
 
-  const toggleMode=()=>{
-    if(Mode==='light'){
-      setMode('dark')
-      document.body.style.backgroundColor='#042743'
+  const toggleMode = () => {
+    if (Mode === "light") {
+      setMode("dark");
+      document.body.style.backgroundColor = "#042743";
+    } else {
+      setMode("light");
+      document.body.style.backgroundColor = "white";
     }
-    else{
-      setMode('light')
-      document.body.style.backgroundColor='white'
-    }
-  }
+  };
 
   return (
     <>
-    {/* <Router> */}
-      <Navbar title="TextUtilities" mode={Mode} toggleMode={toggleMode}/>
+      <Navbar title="TextUtilities" mode={Mode} toggleMode={toggleMode} />
       <div className="container my-5">
-      {/* <Routes> */}
-          
-          <TextForm heading="Enter Text Here" mode={Mode}/> 
-      {/* </Routes> */}
+        <TextForm heading="Enter Text Here" mode={Mode} />
       </div>
-    {/* </Router> */}
     </>
   );
 }
