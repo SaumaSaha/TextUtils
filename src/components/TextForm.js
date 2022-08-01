@@ -8,26 +8,33 @@ export default function TextForm(props) {
     const [text, setText] = useState("");
   const handleUpClick = () => {
     setText(text.toUpperCase());
+    props.showAlert("Converted to Uppercase","success");
   };
   const handleLowClick = () => {
     setText(text.toLowerCase());
+    props.showAlert("Converted to Lowercase","success");
   };
   const handlePuncClick = () => {
     let text1 = "";
     text1 = text.replace(punc, "");
     setText(text1);
+    props.showAlert("Punctuations Removed","success");
   };
   const handleCopy = () => {
     let text1 = document.getElementById("mybox");
     text1.select();
     navigator.clipboard.writeText(text1.value);
+    document.getSelection().removeAllRanges();
+    props.showAlert("Text Copied","success");
   };
   const handleRemoveExSpace = () => {
-    let text1 =text.split(/[ ]+/)
-    setText(text1.join(" "))
+    let text1 =text.split(/[ ]+/);
+    setText(text1.join(" "));
+    props.showAlert("Extra Spaces Removed","success");
   };
   const handleClearClick = () => {
     setText("");
+    props.showAlert("Text Cleared","success");
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -61,22 +68,22 @@ export default function TextForm(props) {
             text='black'
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick} disabled={text.length===0}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleLowClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleLowClick} disabled={text.length===0}>
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary " onClick={handlePuncClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handlePuncClick} disabled={text.length===0}>
           Remove Punctuation
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleRemoveExSpace}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleRemoveExSpace} disabled={text.length===0}>
           Remove Extra Space
         </button>
-        <button className="btn btn-primary " onClick={handleCopy}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleCopy} disabled={text.length===0}>
           Copy Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleClearClick}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleClearClick} disabled={text.length===0}>
           Clear
         </button>
       </div>
